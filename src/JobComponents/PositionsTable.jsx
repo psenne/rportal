@@ -12,7 +12,10 @@ function isSearched(s) {
 
         s.split(" ").forEach(searchTerm => {
             let termFound = false;
-            if (item.info.location.toLowerCase().includes(searchTerm.toLowerCase()) || item.info.title.toLowerCase().includes(searchTerm.toLowerCase()) || item.info.description.toLowerCase().includes(searchTerm.toLowerCase()) || item.info.skill_summary.toLowerCase().includes(searchTerm.toLowerCase()) || item.info.level.toLowerCase().includes(searchTerm.toLowerCase())) {
+            if (item.info.location.toLowerCase().includes(searchTerm.toLowerCase()) 
+                || item.info.title.toLowerCase().includes(searchTerm.toLowerCase()) 
+                || item.info.skill_summary.toLowerCase().includes(searchTerm.toLowerCase()) 
+                || item.info.level.toLowerCase().includes(searchTerm.toLowerCase())) {
                 termFound = true;
             }
             wasFound = wasFound && termFound;
