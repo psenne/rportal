@@ -39,6 +39,7 @@ export default function PositionsTable({ positions }) {
             {positions
                 .filter(isFiltered(selectedcontract))
                 .filter(isSearched(searchterm))
+                .filter(p => p.info.contract !== "Cloverstack")
                 .map(item => {
                     const position_id = item.info.position_id ? `(${item.info.position_id})` : "";
                     const contract = item.info.contract ? `${item.info.contract} - ` : "";
