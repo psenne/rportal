@@ -8,7 +8,9 @@ var prodconfig = {
     databaseURL: "https://staffing-pipeline.firebaseio.com",
     projectId: "staffing-pipeline",
     storageBucket: "staffing-pipeline.appspot.com",
-    messagingSenderId: "403362370549"
+    messagingSenderId: "403362370549",
+    appId: "1:403362370549:web:486a369427a5fc45c406bc",
+    measurementId: "G-2QF0PCWHWR"
 };
 
 var devconfig = {
@@ -33,6 +35,8 @@ const fbLoginsDB = firebase.database().ref("logins");
 const fbPositionsDB = firebase.database().ref("positions");
 const fbContractsDB = firebase.database().ref("contracts");
 const fbauth = firebase.auth();
+firebase.analytics();
+
 
 const SignInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider(); //strictly use Google's Authentication service (built in to Firebase)
