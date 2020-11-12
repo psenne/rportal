@@ -1,3 +1,27 @@
+:root{
+    --active-background: rgb(200, 225, 180) ;
+    --active-text: rgba(0, 0, 0, 0.9) ;
+    
+    --initial-background: #fff ;
+    --initial-text: #000 ;
+
+    --archived-background: rgba(0, 0, 0, 0.05) ;
+    --archived-text: #444 ;
+
+    --processing-background: #97ccf8 ;
+    --processing-text: rgba(0, 0, 0, 0.9) ;
+
+    --interviewed-background: #ffffc6 ;
+    --interviewed-text: rgba(0, 0, 0, 0.9) ;
+
+    --recruiting-background: #ffc478 ;
+    --recruiting-text: rgba(0, 0, 0, 0.9) ;
+}
+
+body{
+    background-color: #efefef !important;
+}
+
 .login-screen {
     position: absolute;
     width: 500px;
@@ -27,47 +51,51 @@
     font-weight: normal;
 }
 
+div.padded{
+    padding: 1rem;
+}
+
 .padded-span {
     padding: 0.5em;
 }
 .status-archived {
-    background-color: rgba(0, 0, 0, 0.05) !important;
-    color: #444 !important;
+    background-color: var(--archived-background) !important;
+    color: var(--archived-text) !important;
+ 
 }
 .status-initial {
-    background-color: #fff !important;
-    color: #000 !important;
+    background-color: var(--initial-background) !important;
+    color: var(--initial-text) !important;
 }
 .status-active {
-    background-color: rgb(200, 225, 180) !important;
-    color: rgba(0, 0, 0, 0.9) !important;
-}
-.status-inactive {
-    background-color: #cccccc !important;
-    color: rgba(0, 0, 0, 0.5) !important;
+    background-color: var(--active-background) !important;
+    color: var(--active-text) !important;
 }
 .status-processing {
-    background-color: #97ccf8 !important;
-    color: rgba(0, 0, 0, 0.9) !important;
+    background-color: var(--processing-background) !important;
+    color: var(--processing-text) !important;
 }
 .status-interviewed {
-    background-color: #ffffc6 !important;
-    color: rgba(0, 0, 0, 0.9) !important;
+    background-color: var(--interviewed-background) !important;
+    color: var(--interviewed-text) !important;
 }
 .status-recruiting {
-    background-color: #ffc478 !important;
-    color: rgba(0, 0, 0, 0.9) !important;
+    background-color: var(--recruiting-background) !important;
+    color: var(--recruiting-text) !important;
 }
 
 .candidate-table-row a {
     color: inherit;
 }
 .candidate-table-row {
-    cursor: pointer;
+    padding: 1rem;  
 }
 .candidate-table-field {
     font-weight: bolder;
     opacity: 0.75;
+}
+.candidate-table-row-info{
+    margin: 1em 0;
 }
 .ui.inverted.menu {
     border-radius: 0 !important;
@@ -81,7 +109,7 @@
     top: 7px;
     z-index: 100;
 }
-.minitoolbar-inline {
+.minitoolbar-inlineX {
     position: absolute;
     top: calc(50% - 35px);
 }
@@ -98,6 +126,7 @@
 }
 .minitoolbar-switch-flagged {
     visibility: visible;
+    background-color: red;
 }
 .minitoolbar-switch-flagged .icon {
     color: red;
