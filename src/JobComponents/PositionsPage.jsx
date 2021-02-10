@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import PositionsToolbar from "./PositionsToolbar";
 import PositionsTable from "./PositionsTable";
 import { Loader, Dimmer } from "semantic-ui-react";
-import { fbPositionsDB } from "../firebase/firebase.config";
+import { fbPositionsDB } from "../firebase.config";
 import tmplPosition from "../constants/positionInfo";
+
 
 export default function PositionsPage() {
     const [positions, updatePositions] = useState([]);
@@ -13,18 +14,22 @@ export default function PositionsPage() {
     const [contractsWithPositions, setcontractsWithPositions] = useState([]);
 
     useEffect(() => {
-        setpageloading(true);
-        const getPositions = fbPositionsDB.orderByChild("contract").on("value", data => {
-            let tmpitems = [];
-            data.forEach(function(position) {
-                tmpitems.push({ key: position.key, info: Object.assign({}, tmplPosition, position.val()) });
+        var unsub = fbPositionsDB.orderBy("title").orderBy("contract").onSnapshot(data => {
+            var tmppositions = [];
+            data.forEach((pos) => {
+                var p = pos.data();
+                tmppositions.push({ key: pos.id, info: { ...tmplPosition, ...p}});
             });
-            setcontractsWithPositions([...new Set(tmpitems.map(item => item.info.contract))]); //send to contract dropdown to show only those contracts that have positions listed.
-            updatePositions(tmpitems);
-            setpageloading(false);
+            setcontractsWithPositions([...new Set(tmppositions.map(item => item.info.contract))]); 
+            updatePositions(tmppositions);
         });
-        return () => fbPositionsDB.off("value", getPositions);
-    }, []);
+
+        return () => unsub();
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+        setpageloading(!pageloading);
+    }, [positions]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const searchPositions = ev => {
         setsearchTerm(ev.currentTarget.value);
@@ -33,7 +38,7 @@ export default function PositionsPage() {
     const HandleContractChange = value => {
         setContractFilter(value);
     };
-
+    
     return (
         <div>
             <Dimmer active={pageloading}>

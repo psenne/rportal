@@ -1,5 +1,5 @@
 import React from "react";
-import { SignOutWithGoogle } from "./firebase/firebase.config";
+import { SignOutWithGoogle } from "./firebase.config";
 import UserContext from "./contexts/UserContext";
 
 import { Image, Menu } from "semantic-ui-react";
@@ -9,7 +9,7 @@ const AppHeader = ({ currentuser }) => (
     <Menu borderless inverted className="no-print">
         <Menu.Item header>
             <a href="/">
-                <Image src={logo} className="header-logo" />
+                <Image src="https://pipeline.renegadetec.com/static/media/RenegadeLogo_white_transparent.d600adc4.png" className="header-logo" />
             </a>
         </Menu.Item>
         <Menu.Menu position="right">

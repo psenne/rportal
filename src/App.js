@@ -4,7 +4,7 @@ import {
   SignInWithGoogle,
   SignOutWithGoogle,
   fbLoginsDB
-} from "./firebase/firebase.config";
+} from "./firebase.config";
 import AppHeader from "./AppHeader";
 import AppRoutes from "./AppRoutes";
 import UserContext from "./contexts/UserContext";
@@ -13,7 +13,7 @@ import { PositionTableFilters } from "./contexts/PositionContext";
 import { Button, Container, Image, Loader, Dimmer } from "semantic-ui-react";
 import "semantic-ui-css/semantic.css";
 import "./index.css";
-import * as logo from "./images/RenegadeLogo_transparent.png";
+import logo from "./images/RenegadeLogo_transparent.png";
 
 class App extends Component {
   constructor() {
@@ -77,7 +77,6 @@ class App extends Component {
 
   render() {
     const { currentuser, isLoading, loadingMSG } = this.state;
-
     if (!currentuser) {
       //user is not logged in. show google logon button.
       return (
@@ -86,7 +85,7 @@ class App extends Component {
             <Loader>{loadingMSG}</Loader>
           </Dimmer>
           <div className="login-screen">
-            <Image src={logo} />
+            <Image src="https://pipeline.renegadetec.com/static/media/RenegadeLogo_transparent.a2b446c7.png" />
             <Button
               className="login-button"
               content="Sign in with Google"

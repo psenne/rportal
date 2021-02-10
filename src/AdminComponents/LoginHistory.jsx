@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { fbLoginsDB } from "../firebase/firebase.config";
+import { fbLoginsDB } from "../firebase.config";
 import { format, parseISO } from "date-fns";
 import { Container, Table, Header, Icon} from "semantic-ui-react";
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
-import { fbContractsDB } from "../firebase/firebase.config";
+import { fbContractsDB } from "../firebase.config";
 
 // returns an array of contract names:
 // [hawkeye, meritage, R2]
