@@ -1,10 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
-import { Segment, Header, Icon, Label } from "semantic-ui-react"
+import { Segment, Header, Icon, Accordion, Transition } from "semantic-ui-react"
 import { format } from "date-fns"
 import Markdown from "markdown-to-jsx"
 
 function PositionSummary({ position }) {
+    const [showdescription, setshowdescription] = useState(false)
+
     const position_id = position.info.position_id ? `Position #${position.info.position_id}` : ""
     const contract = position.info.contract ? `${position.info.contract} ` : ""
     const level = position.info.level ? `Level: ${position.info.level}` : ""
@@ -25,28 +27,43 @@ function PositionSummary({ position }) {
         ""
     )
     const more_info = position.info.description ? (
-        <Link to={`/${position.key}`}>
-            <Icon name="expand arrows alternate"></Icon>more info
-        </Link>
+        <Accordion>
+            <Accordion.Title
+                onClick={(ev) => {
+                    ev.stopPropagation()
+                    ev.preventDefault()
+                    setshowdescription(!showdescription)
+                }}
+            >
+                <Icon name="expand arrows alternate"></Icon>more info
+            </Accordion.Title>
+            <Transition visible={showdescription} animation="slide down" duration={250}>
+                <Accordion.Content active={showdescription}>
+                    <Markdown>{position.info.description}</Markdown>
+                </Accordion.Content>
+            </Transition>
+        </Accordion>
     ) : (
         ""
     )
 
     return (
         <div key={position.key} className="candidate-table-row">
-            <Segment>
-                <Header>
-                    <Header.Content>{position.info.title}</Header.Content>
-                    <Header.Subheader>
-                        <div>Contract: {contract} </div>
-                        <div>{position_id}</div>
-                        <div>{level}</div>
-                        <div>{location}</div>
-                    </Header.Subheader>
-                </Header>
-                {skill_summary}
-                {more_info}
-            </Segment>
+            <Link to={`/${position.key}`}>
+                <Segment>
+                    <Header>
+                        <Header.Content>{position.info.title}</Header.Content>
+                        <Header.Subheader>
+                            <div>Contract: {contract} </div>
+                            <div>{position_id}</div>
+                            <div>{level}</div>
+                            <div>{location}</div>
+                        </Header.Subheader>
+                    </Header>
+                    {skill_summary}
+                    {more_info}
+                </Segment>
+            </Link>
         </div>
     )
 }
