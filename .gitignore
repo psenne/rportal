@@ -6,6 +6,7 @@
 
 # testing
 /coverage
+/test-data
 
 # production
 /build
@@ -29,3 +30,4 @@ public/.htaccess
 
 *.log
 .firebase/hosting.*
+.env.production

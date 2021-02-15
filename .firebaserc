@@ -1,5 +1,6 @@
 {
   "projects": {
+    "prod": "new-staffing-pipeline-prod",
     "default": "new-staffing-pipeline-prod"
   },
   "targets": {
@@ -7,9 +8,6 @@
       "hosting": {
         "portal": [
           "new-staffing-portal-prod"
-        ],
-        "pipeline": [
-          "new-staffing-pipeline-prod"
         ]
       }
     }
