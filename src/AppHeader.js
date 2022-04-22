@@ -1,9 +1,9 @@
-import React from "react";
-import { SignOutWithGoogle } from "./firebase.config";
-import UserContext from "./contexts/UserContext";
+import React from "react"
+import { SignOut } from "./firebase.config"
+import UserContext from "./contexts/UserContext"
 
-import { Image, Menu } from "semantic-ui-react";
-import * as logo from "./images/RenegadeLogo_white_transparent.png";
+import { Image, Menu } from "semantic-ui-react"
+import * as logo from "./images/RenegadeLogo_white_transparent.png"
 
 const AppHeader = ({ currentuser }) => (
     <Menu borderless inverted className="no-print">
@@ -15,8 +15,8 @@ const AppHeader = ({ currentuser }) => (
         <Menu.Menu position="right">
             <Menu.Item>
                 <UserContext.Consumer>
-                    {currentuser => (
-                        <span title="Log off" className="avatar floated-right" onClick={SignOutWithGoogle}>
+                    {(currentuser) => (
+                        <span title="Log off" className="avatar floated-right" onClick={SignOut}>
                             <Image src={currentuser.photoURL} className="cursored" avatar size="mini" verticalAlign="middle" spaced />
                             {currentuser.email}
                         </span>
@@ -25,6 +25,6 @@ const AppHeader = ({ currentuser }) => (
             </Menu.Item>
         </Menu.Menu>
     </Menu>
-);
+)
 
-export default AppHeader;
+export default AppHeader
