@@ -1,24 +1,24 @@
-import React, { useContext } from "react";
-import PositionContext from "../contexts/PositionContext";
-import { Input, Icon, Menu, Container } from "semantic-ui-react";
-import ContractDropdown from "../CandidateComponents/ContractDropdown";
-import classnames from "classnames";
+import React, { useContext } from "react"
+import PositionContext from "../contexts/PositionContext"
+import { Input, Icon, Menu, Container } from "semantic-ui-react"
+import ContractDropdown from "../CommonComponents/ContractDropdown"
+import classnames from "classnames"
 
 export default ({ positions, contracts }) => {
-    const { selectedcontract, setselectedcontract, searchterm, setsearchterm } = useContext(PositionContext);
+    const { selectedcontract, setselectedcontract, searchterm, setsearchterm } = useContext(PositionContext)
 
-    const SetSelectedContract = value => {
-        setselectedcontract(value);
-    };
+    const SetSelectedContract = (value) => {
+        setselectedcontract(value)
+    }
 
-    const SetSearchTerm = value => {
-        setsearchterm(value);
-    };
+    const SetSearchTerm = (value) => {
+        setsearchterm(value)
+    }
 
     const ClearFilters = () => {
-        setselectedcontract("");
-        setsearchterm("");
-    };
+        setselectedcontract("")
+        setsearchterm("")
+    }
 
     return (
         <Container fluid>
@@ -31,16 +31,10 @@ export default ({ positions, contracts }) => {
                 </Menu.Item>
                 <Menu.Menu position="right">
                     <Menu.Item>
-                        <Input placeholder="Search" value={searchterm} onChange={(ev, data) => SetSearchTerm(data.value)} />
-                    </Menu.Item>
-                    <Menu.Item>
-                        <Icon.Group onClick={ClearFilters} title="Clear filters">
-                            <Icon name="filter" size="large" link />
-                            <Icon name="dont" size="large" color="red" link />
-                        </Icon.Group>
+                        <Input placeholder="Filter Positions" icon={searchterm ? <Icon name="dont" color="red" link onClick={ClearFilters} /> : <Icon name="filter" />} value={searchterm} onChange={(ev, data) => SetSearchTerm(data.value)} />
                     </Menu.Item>
                 </Menu.Menu>
             </Menu>
         </Container>
     )
-};
+}

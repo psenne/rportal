@@ -21,10 +21,10 @@ if (!firebase.apps.length) {
 }
 
 if (window.location.hostname === "localhost") {
-    // firebase.functions().useEmulator("localhost", 5001)
     firebase.auth().useEmulator("http://localhost:9099/")
     firebase.firestore().useEmulator("localhost", 8080)
     firebase.database().useEmulator("localhost", 9000)
+    firebase.storage().useEmulator("localhost", 9199)
 }
 
 const fbStorage = firebase.storage().ref()

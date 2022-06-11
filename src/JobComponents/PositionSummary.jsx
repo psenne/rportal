@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { Segment, Header, Icon, Accordion, Transition } from "semantic-ui-react"
 import { format } from "date-fns"
 import Markdown from "markdown-to-jsx"
+import Files from "../CommonComponents/Files"
 
 function PositionSummary({ position }) {
     const [showdescription, setshowdescription] = useState(false)
@@ -11,9 +12,9 @@ function PositionSummary({ position }) {
     const contract = position.info.contract ? `${position.info.contract} ` : ""
     const level = position.info.level ? `Level: ${position.info.level}` : ""
     const skill_summary = position.info.skill_summary ? (
-        <Segment basic>
+        <p>
             <Markdown>{position.info.skill_summary}</Markdown>
-        </Segment>
+        </p>
     ) : (
         ""
     )
@@ -64,6 +65,7 @@ function PositionSummary({ position }) {
                     {more_info}
                 </Segment>
             </Link>
+            <Files id={position.key} />
         </div>
     )
 }

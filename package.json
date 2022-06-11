@@ -22,12 +22,11 @@
         "xlsx": "^0.15.4"
     },
     "scripts": {
-        "start": "env-cmd -f .env.production react-scripts start",
-        "build": "env-cmd -f .env.production react-scripts build",
-        "emulator": "firebase emulators:start -P prod --import=./test-data --export-on-exit",
-        "deploy": "env-cmd -f .env.production npm run build && firebase deploy --only hosting:portal -P prod",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "start": "env-cmd -f .env.test react-scripts start",
+        "build:prod": "env-cmd -f .env.production react-scripts build",
+        "preview": "env-cmd -f .env.production npm run build:prod && firebase hosting:channel:deploy portal-preview -P prod",
+        "emulator": "firebase emulators:start -P test --import=./test-data --export-on-exit",
+        "deploy": "env-cmd -f .env.production npm run build && firebase deploy --only hosting:portal -P prod"
     },
     "eslintConfig": {
         "extends": [

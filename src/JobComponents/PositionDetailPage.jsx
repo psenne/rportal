@@ -6,6 +6,7 @@ import { Header, Segment, Container, Menu, Icon } from "semantic-ui-react"
 import classnames from "classnames"
 import { format } from "date-fns"
 import Markdown from "markdown-to-jsx"
+import Files from "../CommonComponents/Files"
 
 export default function PositionDetailPage({ match }) {
     const [position, setposition] = useState(null)
@@ -70,6 +71,7 @@ export default function PositionDetailPage({ match }) {
                             <Markdown>{position.description}</Markdown>
                         </Segment>
                     </Segment>
+                    <Files id={key} />
                 </Container>
             </div>
         )
